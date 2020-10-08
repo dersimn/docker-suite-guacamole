@@ -4,10 +4,16 @@ version: '3'
 services:
   guacd:
     image: guacamole/guacd
+    restart: always
+    # -------------------------------
+    # Comment out for Productive use
+    # -------------------------------
     ports:
       - 4822:4822
+    # -------------------------------
   guacamole:
     image: guacamole/guacamole
+    restart: always
     depends_on:
       - mysql
     ports:
@@ -19,11 +25,14 @@ services:
       MYSQL_USER: guacamole
       MYSQL_PASSWORD: guacamole
   mysql:
-    image: mysql:5
-    command: --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;'
+    image: mysql
+    restart: always
+    # -------------------------------
+    # Comment out for Productive use
+    # -------------------------------
     ports:
       - "3306:3306"
-    restart: always
+    # -------------------------------
     volumes:
       - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql:ro
     environment:
@@ -31,6 +40,10 @@ services:
       MYSQL_DATABASE: guacamole
       MYSQL_USER: guacamole
       MYSQL_PASSWORD: guacamole
+    command: --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;'
+  # -------------------------------
+  # Comment out for Productive use
+  # -------------------------------
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     depends_on:
@@ -42,3 +55,4 @@ services:
     restart: always
     ports:
       - 8000:80
+   # -------------------------------
