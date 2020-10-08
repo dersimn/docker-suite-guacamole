@@ -6,4 +6,4 @@ Run with:
 
     docker-compose up -d
 
-Go to <http://localhost/guacamole>, login with user/password: `guacadmin`.
+Go to <http://localhost>, login with user/password: `guacadmin`.
