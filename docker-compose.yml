@@ -12,6 +12,8 @@ services:
       - 443:443
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx.key:/etc/ssl/private/nginx.key:ro
+      - ./nginx.crt:/etc/ssl/certs/nginx.crt:ro
   guacd:
     image: guacamole/guacd
     restart: always

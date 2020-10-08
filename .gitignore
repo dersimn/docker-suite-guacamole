@@ -1,1 +1,3 @@
 /initdb.sql
+/nginx.key
+/nginx.crt
